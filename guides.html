@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="title" content="JTech - Jewish Tech & Filtering Forum" />
+    <meta
+      name="description"
+      content="JTech's mission is to empower the Jewish community with the most precise, accurate, and up-to-date tech and filtering information."
+    />
+    <meta name="keywords" content="jtech,jewish,tech,filter,egate,forum,apps4flip,flip phone,flip,phone,qin,f21,kosher" />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="English" />
+    <meta name="author" content="doniel@mesnan.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header class="bg-gray-900">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1 p-1">
+            <span class="sr-only">JTech Forums</span>
+            <img class="h-12 w-auto" src="img/smalljtech.png" alt="" />
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex lg:hidden">
+          <button
+            id="mobile-menu-button"
+            type="button"
+            class="cursor-pointer -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="/" class="text-md/6 font-semibold text-white">Home</a>
+          <a href="/apps" class="text-md/6 font-semibold text-white">Apps</a>
+          <a href="/guides" class="text-md/6 font-semibold text-white">Guides</a>
+          <a href="https://jtechforums.org" target="_blank" class="text-md/6 font-semibold text-white">Forum</a>
+        </div>
+
+        <!-- Desktop Search Bar -->
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <form id="search-form-desktop" action="https://www.jtechforums.org/search" method="get">
+            <div
+              class="flex rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-gray-300"
+            >
+              <input
+                id="search-input-desktop"
+                type="search"
+                name="q"
+                placeholder="Search the Forum..."
+                class="block min-w-0 grow px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
+              />
+              <div class="flex py-1.5 pr-1.5">
+                <kbd class="inline-flex items-center rounded-sm border border-gray-200 px-1 font-sans text-xs text-gray-400">enter</kbd>
+              </div>
+            </div>
+            <p id="error-message-desktop" class="mt-2 text-sm text-red-500 hidden">Minimum character count is 4.</p>
+          </form>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden fixed inset-0 z-10 bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+        <div class="flex items-center justify-between">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">JTech Forums</span>
+            <img class="h-8 w-auto" src="img/smalljtech.png" alt="" />
+          </a>
+          <button id="mobile-menu-close" type="button" class="cursor-pointer -m-2.5 rounded-md p-2.5 text-gray-400">
+            <span class="sr-only">Close menu</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/25">
+            <div class="space-y-2 py-6">
+              <a href="/" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Home</a>
+              <a href="/apps" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Apps</a>
+              <a href="/guides" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Guides</a>
+              <a href="https://jtechforums.org" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800"
+                >Forum</a
+              >
+            </div>
+
+            <!-- Mobile Search Bar -->
+            <div class="py-6">
+              <form id="search-form-mobile" action="https://www.jtechforums.org/search" method="get">
+                <div
+                  class="flex rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-gray-300"
+                >
+                  <input
+                    id="search-input-mobile"
+                    type="search"
+                    name="q"
+                    placeholder="Search the Forum..."
+                    class="block min-w-0 grow px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
+                  />
+                  <div class="flex py-1.5 pr-1.5">
+                    <kbd class="inline-flex items-center rounded-sm border border-gray-200 px-1 font-sans text-xs text-gray-400">enter</kbd>
+                  </div>
+                </div>
+                <p id="error-message-mobile" class="mt-2 text-sm text-red-500 hidden">Minimum character count is 4.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenu = document.getElementById("mobile-menu");
+        const openButton = document.getElementById("mobile-menu-button");
+        const closeButton = document.getElementById("mobile-menu-close");
+
+        // Open menu
+        openButton.addEventListener("click", function () {
+          mobileMenu.classList.remove("hidden");
+        });
+
+        // Close menu
+        closeButton.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden");
+        });
+
+        // Search validation for Desktop
+        document.getElementById("search-form-desktop").addEventListener("submit", function (event) {
+          const input = document.getElementById("search-input-desktop");
+          const errorMessage = document.getElementById("error-message-desktop");
+
+          if (input.value.length < 4) {
+            event.preventDefault();
+            errorMessage.classList.remove("hidden");
+          } else {
+            errorMessage.classList.add("hidden");
+          }
+        });
+
+        // Search validation for Mobile
+        document.getElementById("search-form-mobile").addEventListener("submit", function (event) {
+          const input = document.getElementById("search-input-mobile");
+          const errorMessage = document.getElementById("error-message-mobile");
+
+          if (input.value.length < 4) {
+            event.preventDefault();
+            errorMessage.classList.remove("hidden");
+          } else {
+            errorMessage.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+
+    <!--Header-->
+    <div class="bg-white px-6 pt-24 pb-12 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="mt-2 text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Guides</h2>
+        <p class="mt-8 text-md font-medium text-pretty text-gray-500">
+          We have compiled a comprehensive list of guides to get you started. For more information about our apps and content, check out the forum.
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-white">
+      <div class="mx-auto max-w-6xl px-6 sm:px-24 pb-24">
+        <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-6 shadow-2xl sm:rounded-3xl sm:px-24">
+          <h2 class="mx-auto max-w-3xl text-center text-2xl sm:text-4xl font-semibold tracking-tight text-white">
+            Do you want to add your own guides to the list?
+          </h2>
+          <p class="mx-auto mt-4 sm:max-w-lg text-center text-sm text-gray-300">
+            Private message a moderator or administrator on the forum with your guide and they will be happy to put it on the site!
+          </p>
+          <div class="flex justify-center mt-6">
+            <button
+              class="rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <a href="https://www.jtechforums.org/" target="_blank">Get Started</a>
+            </button>
+          </div>
+
+          <svg viewBox="0 0 1024 1024" class="absolute top-1/2 left-1/2 -z-10 size-[32rem] sm:size-[64rem] -translate-x-1/2" aria-hidden="true">
+            <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
+            <defs>
+              <radialGradient
+                id="759c1415-0410-454c-8f7c-9a820de03641"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(512 512) rotate(90) scale(512)"
+              >
+                <stop stop-color="#7775D6" />
+                <stop offset="1" stop-color="#E935C1" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row">
+      <!-- Sidebar -->
+      <aside class="w-full md:w-1/3 bg-white shadow-sm rounded-xl p-6 self-start md:ml-16 mx-16 md:mx-0 max-w-[calc(100%-8rem)] mb-16 md:mb-0">
+        <h2 class="text-xl font-semibold mb-4">Filter by Category</h2>
+        <div id="filter-options" class="space-y-2"></div>
+        <br />
+        <h2 class="text-xl font-semibold mb-4">Filter by Posters</h2>
+        <div id="filter-options-posters" class="space-y-2"></div>
+      </aside>
+      <!-- Apps -->
+      <div class="bg-white">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div id="app-container" class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2"></div>
+        </div>
+      </div>
+      <script>
+        const apps = [
+          {
+            title: "How to Install, Uninstall, and Launch Apps on Flip Phones",
+            description:
+              "This guide will teach you how to install apps on Android Flip Phones. You can see a list of apps we compiled on our apps page. We do not endorse any app or tell you any apps areokay. It is up for you to decide which apps are hashkafically right for you.",
+            category: { name: "Android Guides", link: "https://www.jtechforums.org/t/uploaded-apps-thread/990/10" },
+            link: "/guides/how-to-install-uninstall-launch-apps-flip-phones",
+            postedBy: {
+              name: "DonBot",
+              icon: "https://www.jtechforums.org/user_avatar/www.jtechforums.org/donbot/144/588_2.png",
+              link: "https://www.jtechforums.org/u/donbot",
+            },
+          },
+          {
+            title: "What is WebADB and How to Use It",
+            description:
+              "WebADB is a browser-based tool that allows users to interact with their Android devices using ADB (Android Debug Bridge) commands. It provides an easy way to manage Android devices without needing to install ADB on your computer, making it a great option for users who want a simple, no-installation solution for debugging, sideloading, and managing apps.",
+            category: { name: "Android Guides", link: "https://www.jtechforums.org/t/uploaded-apps-thread/990/10" },
+            link: "/guides/what-is-and-how-to-use-webadb",
+            postedBy: {
+              name: "DonBot",
+              icon: "https://www.jtechforums.org/user_avatar/www.jtechforums.org/donbot/144/588_2.png",
+              link: "https://www.jtechforums.org/u/donbot",
+            },
+          },
+        ];
+
+        function populateApps(filterCategory = [], filterPosters = []) {
+          const appContainer = document.getElementById("app-container");
+          appContainer.innerHTML = "";
+
+          const sortedApps = [...apps].sort((a, b) => a.title.localeCompare(b.title));
+
+          const filteredApps = sortedApps.filter((app) => {
+            const matchesType = filterCategory.length === 0 || filterCategory.includes(app.category.name);
+            const matchesPoster = filterPosters.length === 0 || filterPosters.includes(app.postedBy.name);
+
+            return matchesType && matchesPoster;
+          });
+
+          filteredApps.forEach((guide) => {
+            const appCard = document.createElement("article");
+            appCard.className = "flex max-w-xl flex-col items-start justify-between bg-gray-50/50 p-6 rounded-lg shadow-md";
+            appCard.innerHTML = `
+<div class="flex items-center justify-between gap-x-4 text-xs w-full">
+  <a href="${guide.category.link}" class="relative z-10 rounded-full bg-gray-100 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-300">
+    ${guide.category.name}
+  </a>
+  <div class="flex items-center gap-x-2 ml-auto">
+    <a href="${guide.postedBy.link}" class="font-semibold text-gray-900 hover:text-indigo-600 flex items-center gap-x-2 text-lg/6">
+      <img src="${guide.postedBy.icon}" alt="${guide.postedBy.name}" class="size-8 rounded-full bg-gray-50">
+      @${guide.postedBy.name}
+    </a>
+  </div>
+</div>
+<div class="group relative mt-4">
+  <h3 class="mt-2 text-2xl/6 font-semibold text-gray-900 group-hover:text-gray-600">
+    <a href="${guide.link}">
+      <span class="absolute inset-0"></span>
+      ${guide.title}
+    </a>
+  </h3>
+  <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">${guide.description}</p>
+</div>
+
+            `;
+            appContainer.appendChild(appCard);
+          });
+        }
+
+        function setForumFilter(basic) {
+          showOnlyBasic = basic;
+          document.getElementById("basic-underline").classList.toggle("bg-indigo-500", basic);
+          document.getElementById("basic-underline").classList.toggle("bg-transparent", !basic);
+          document.getElementById("advanced-underline").classList.toggle("bg-indigo-500", !basic);
+          document.getElementById("advanced-underline").classList.toggle("bg-transparent", basic);
+
+          document.getElementById("basic-tab").classList.toggle("text-gray-900", basic);
+          document.getElementById("basic-tab").classList.toggle("text-gray-500", !basic);
+          document.getElementById("advanced-tab").classList.toggle("text-gray-900", !basic);
+          document.getElementById("advanced-tab").classList.toggle("text-gray-500", basic);
+          applyFilters();
+        }
+
+        function generateFilterOptions() {
+          const typeContainer = document.getElementById("filter-options");
+          const posterContainer = document.getElementById("filter-options-posters");
+
+          // Extract unique values
+          const types = [...new Set(apps.map((app) => app.category.name))].sort();
+          const posters = [...new Set(apps.map((app) => app.postedBy.name))].sort();
+
+          types.forEach((type) => createCheckbox(type, typeContainer, "type"));
+          posters.forEach((poster) => createCheckbox(poster, posterContainer, "poster"));
+        }
+
+        function createCheckbox(value, container, category) {
+          const div = document.createElement("div");
+          div.className = "flex items-center";
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.value = value;
+          checkbox.className = "mr-2 filter-checkbox";
+          checkbox.dataset.category = category;
+          checkbox.addEventListener("change", applyFilters);
+
+          const label = document.createElement("label");
+          label.textContent = value;
+          label.className = "text-gray-700";
+
+          div.appendChild(checkbox);
+          div.appendChild(label);
+          container.appendChild(div);
+        }
+
+        function applyFilters() {
+          const checkedTypeBoxes = [...document.querySelectorAll('.filter-checkbox[data-category="type"]:checked')];
+          const checkedPosterBoxes = [...document.querySelectorAll('.filter-checkbox[data-category="poster"]:checked')];
+
+          const selectedTypes = checkedTypeBoxes.map((box) => box.value);
+          const selectedPosters = checkedPosterBoxes.map((box) => box.value);
+
+          populateApps(selectedTypes, selectedPosters);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          generateFilterOptions();
+          populateApps();
+        });
+      </script>
+    </div>
+
+    <!--Footer-->
+    <footer class="bg-gray-900 mt-24">
+      <div class="mx-auto max-w-7xl px-6 py-12 md:items-center lg:px-8">
+        <p class="mt-8 text-center text-sm/6 text-gray-200 md:mt-0">&copy; 2025 JTech. All rights reserved.</p>
+      </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/@material-tailwind/html@latest/scripts/tooltip.js"></script>
+  </body>
+</html>

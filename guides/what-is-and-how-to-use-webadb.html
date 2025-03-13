@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="title" content="JTech - Jewish Tech & Filtering Forum" />
+    <meta
+      name="description"
+      content="JTech's mission is to empower the Jewish community with the most precise, accurate, and up-to-date tech and filtering information."
+    />
+    <meta name="keywords" content="jtech,jewish,tech,filter,egate,forum,apps4flip,flip phone,flip,phone,qin,f21,kosher" />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="language" content="English" />
+    <meta name="author" content="doniel@mesnan.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header class="bg-gray-900">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1 p-1">
+            <span class="sr-only">JTech Forums</span>
+            <img class="h-12 w-auto" src="/img/smalljtech.png" alt="" />
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex lg:hidden">
+          <button
+            id="mobile-menu-button"
+            type="button"
+            class="cursor-pointer -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="/" class="text-md/6 font-semibold text-white">Home</a>
+          <a href="/apps" class="text-md/6 font-semibold text-white">Apps</a>
+          <a href="/guides" class="text-md/6 font-semibold text-white">Guides</a>
+          <a href="https://jtechforums.org" target="_blank" class="text-md/6 font-semibold text-white">Forum</a>
+        </div>
+
+        <!-- Desktop Search Bar -->
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <form id="search-form-desktop" action="https://www.jtechforums.org/search" method="get">
+            <div
+              class="flex rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-gray-300"
+            >
+              <input
+                id="search-input-desktop"
+                type="search"
+                name="q"
+                placeholder="Search the Forum..."
+                class="block min-w-0 grow px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
+              />
+              <div class="flex py-1.5 pr-1.5">
+                <kbd class="inline-flex items-center rounded-sm border border-gray-200 px-1 font-sans text-xs text-gray-400">enter</kbd>
+              </div>
+            </div>
+            <p id="error-message-desktop" class="mt-2 text-sm text-red-500 hidden">Minimum character count is 4.</p>
+          </form>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden fixed inset-0 z-10 bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+        <div class="flex items-center justify-between">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">JTech Forums</span>
+            <img class="h-8 w-auto" src="/img/smalljtech.png" alt="" />
+          </a>
+          <button id="mobile-menu-close" type="button" class="cursor-pointer -m-2.5 rounded-md p-2.5 text-gray-400">
+            <span class="sr-only">Close menu</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/25">
+            <div class="space-y-2 py-6">
+              <a href="/" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Home</a>
+              <a href="/apps" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Apps</a>
+
+              <a href="/guides" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Guides</a>
+              <a href="https://jtechforums.org" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800"
+                >Forum</a
+              >
+            </div>
+
+            <!-- Mobile Search Bar -->
+            <div class="py-6">
+              <form id="search-form-mobile" action="https://www.jtechforums.org/search" method="get">
+                <div
+                  class="flex rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-gray-300"
+                >
+                  <input
+                    id="search-input-mobile"
+                    type="search"
+                    name="q"
+                    placeholder="Search the Forum..."
+                    class="block min-w-0 grow px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
+                  />
+                  <div class="flex py-1.5 pr-1.5">
+                    <kbd class="inline-flex items-center rounded-sm border border-gray-200 px-1 font-sans text-xs text-gray-400">enter</kbd>
+                  </div>
+                </div>
+                <p id="error-message-mobile" class="mt-2 text-sm text-red-500 hidden">Minimum character count is 4.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenu = document.getElementById("mobile-menu");
+        const openButton = document.getElementById("mobile-menu-button");
+        const closeButton = document.getElementById("mobile-menu-close");
+
+        // Open menu
+        openButton.addEventListener("click", function () {
+          mobileMenu.classList.remove("hidden");
+        });
+
+        // Close menu
+        closeButton.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden");
+        });
+
+        // Search validation for Desktop
+        document.getElementById("search-form-desktop").addEventListener("submit", function (event) {
+          const input = document.getElementById("search-input-desktop");
+          const errorMessage = document.getElementById("error-message-desktop");
+
+          if (input.value.length < 4) {
+            event.preventDefault();
+            errorMessage.classList.remove("hidden");
+          } else {
+            errorMessage.classList.add("hidden");
+          }
+        });
+
+        // Search validation for Mobile
+        document.getElementById("search-form-mobile").addEventListener("submit", function (event) {
+          const input = document.getElementById("search-input-mobile");
+          const errorMessage = document.getElementById("error-message-mobile");
+
+          if (input.value.length < 4) {
+            event.preventDefault();
+            errorMessage.classList.remove("hidden");
+          } else {
+            errorMessage.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+
+    <div class="bg-white px-6 py-32 lg:px-8">
+      <div class="mx-auto max-w-3xl text-base/7 text-gray-700">
+        <p class="text-base/7 font-semibold text-indigo-600">Android Guide</p>
+        <h1 class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">What is WebADB and How to Use It</h1>
+        <p class="mt-6 text-xl/8">
+          WebADB is a browser-based tool that allows users to interact with their Android devices using ADB (Android Debug Bridge) commands. It
+          provides an easy way to manage Android devices without needing to install ADB on your computer, making it a great option for users who want
+          a simple, no-installation solution for debugging, sideloading, and managing apps.
+        </p>
+        <br />
+        <p class="text-lg/8">
+          Need help? Join our
+          <a href="https://jtechforums.org" target="_blank" class="text-indigo-600 underline">forums</a>, where our amazing community members can
+          assist you with any questions!
+        </p>
+        <h2 class="mt-8 text-3xl font-semibold tracking-tight text-pretty text-gray-900">Features of WebADB</h2>
+        <div class="mt-4 ml-12 max-w-2xl">
+          <ul role="list" class="mt-2 max-w-xxl space-y-4 text-gray-600 marker:text-indigo-600 list-disc list-inside">
+            <li>
+              <strong class="font-semibold text-gray-900">Wireless ADB Connection</strong> – No need for cables; connect your Android device via
+              Wi-Fi.
+            </li>
+            <li>
+              <strong class="font-semibold text-gray-900">APK Installation & Uninstallation</strong> – Easily sideload APKs and manage installed apps.
+            </li>
+            <li><strong class="font-semibold text-gray-900">Screen Mirroring</strong> – View and control your device's screen from your browser.</li>
+            <li><strong class="font-semibold text-gray-900">File Manager</strong> – Transfer files between your computer and Android device.</li>
+            <li><strong class="font-semibold text-gray-900">Shell Access</strong> – Run ADB commands directly from the browser.</li>
+            <li><strong class="font-semibold text-gray-900">Device Information</strong> – View system details, logs, and more.</li>
+            <li><strong class="font-semibold text-gray-900">Screen Recording & Screenshots</strong> – Capture your device's screen with ease.</li>
+          </ul>
+        </div>
+
+        <h2 class="mt-8 text-3xl font-semibold tracking-tight text-pretty text-gray-900">Requirements</h2>
+        <div class="mt-4 ml-12 max-w-2xl">
+          <ul role="list" class="mt-2 max-w-xxl space-y-4 text-gray-600 marker:text-indigo-600 list-disc list-inside">
+            <li>An Android device with Developer Options support.</li>
+            <li>A Chrome-based browser (such as Google Chrome, Microsoft Edge, or Brave) that supports WebUSB.</li>
+            <li>A computer with an active internet connection.</li>
+          </ul>
+        </div>
+        <h2 class="mt-8 text-3xl font-semibold tracking-tight text-pretty text-gray-900">How to Use WebADB</h2>
+        <h3 class="mt-8 ml-4 text-2xl font-semibold tracking-tight text-pretty text-gray-900">Step 1: Enable Developer Options & USB Debugging</h3>
+        <div class="mt-4 ml-12 max-w-2xl">
+          <ol role="list" class="mt-2 max-w-xxl space-y-4 text-gray-600 marker:text-indigo-600 list-decimal list-inside">
+            <li>Open your Android device’s Settings.</li>
+            <li>Go to About phone and tap Build number 7 times to enable Developer Options.</li>
+            <li>Navigate to Developer Options (found in Settings > System > Developer Options).</li>
+            <li>Scroll down to USB Debugging and toggle it on.</li>
+          </ol>
+        </div>
+        <h3 class="mt-8 ml-4 text-2xl font-semibold tracking-tight text-pretty text-gray-900">Step 2: Open WebADB & Connect Your Device</h3>
+        <div class="mt-4 ml-12 max-w-2xl">
+          <ol role="list" class="mt-2 max-w-xxl space-y-4 text-gray-600 marker:text-indigo-600 list-decimal list-inside">
+            <li>On your computer, go to <a href="https://app.webadb.com" target="_blank">app.webadb.com</a>.</li>
+            <li>Connect your device to your computer using a USB cable.</li>
+            <li>Click Add Device on WebADB (in the top left) and choose your device.</li>
+            <li>Click Connect (next to the Add Device Button) and press Allow on your device (in the popup that comes up on your device).</li>
+          </ol>
+        </div>
+        <h2 class="mt-8 text-3xl font-semibold tracking-tight text-pretty text-gray-900">Congrats! You Are Connected - Use WebADB’s Features</h2>
+        <div class="mt-4 ml-6 max-w-2xl">
+          <ul role="list" class="mt-2 max-w-xl space-y-4 text-gray-600 marker:text-indigo-600 list-disc list-inside">
+            <li><strong>Install an APK:</strong> Click Select APK and upload the file.</li>
+            <li><strong>Uninstall an App:</strong> Choose an app from the list and click Uninstall.</li>
+            <li><strong>Run ADB Commands:</strong> Open Shell and type your ADB commands.</li>
+            <li><strong>Transfer Files:</strong> Use the File Manager to send or retrieve files.</li>
+            <li><strong>View Device Info:</strong> Click Device Info for system details.</li>
+            <li><strong>Mirror Screen:</strong> Click Screen to view and interact with your phone.</li>
+          </ul>
+        </div>
+        <h2 class="mt-8 text-3xl font-semibold tracking-tight text-pretty text-gray-900">Troubleshooting</h2>
+        <div class="mt-4 ml-6 max-w-2xl">
+          <ul role="list" class="mt-2 max-w-xxl space-y-4 text-gray-600 marker:text-indigo-600 list-disc list-inside">
+            <li>
+              <strong>Device Not Detected?</strong>
+              <ol role="list" class="mt-2 ml-6 max-w-xxl space-y-4 text-gray-600 marker:text-indigo-600 list-decimal list-inside">
+                <li>Ensure USB Debugging is enabled.</li>
+                <li>If using Wi-Fi mode, confirm both devices are on the same network.</li>
+                <li>Try a different USB cable or port.</li>
+                <li>Check if the ADB debugging prompt appears on your device and tap Allow.</li>
+              </ol>
+            </li>
+            <li>
+              <strong>WebADB Fails to Install an APK?</strong>
+              <ol role="list" class="mt-2 ml-6 max-w-xxl space-y-4 text-gray-600 marker:text-indigo-600 list-decimal list-inside">
+                <li>Make sure the APK is compatible with your device.</li>
+                <li>Verify that "Install apps from unknown sources" is enabled.</li>
+              </ol>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-8 max-w-2xl">
+          <h2 class="text-3xl font-semibold tracking-tight text-pretty text-gray-900">Go Further</h2>
+          <p class="mt-3 ml-4">
+            For more information and to learn how to do more, see our
+            <a class="text-indigo-600 underline" href="https://www.jtechforums.org/c/android-guides/15" target="_blank">Android Guides</a> category on
+            the community forum.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="bg-gray-900 mt-24">
+      <div class="mx-auto max-w-7xl px-6 py-12 md:items-center lg:px-8">
+        <p class="mt-8 text-center text-sm/6 text-gray-200 md:mt-0">&copy; 2025 JTech. All rights reserved.</p>
+      </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/@material-tailwind/html@latest/scripts/tooltip.js"></script>
+  </body>
+</html>
