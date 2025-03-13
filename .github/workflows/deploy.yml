@@ -1,23 +1,22 @@
-name: Generate a build and push to another branch
+name: Push to Deploy Branch
 
 on:
   push:
     branches:
-      - main # The branch name your are commit the new changes
+      - main # Trigger on push to main
 
 jobs:
-  build:
+  push:
     runs-on: ubuntu-latest
-    name: Build and Push
+    name: Push to Deploy
     steps:
-      - name: git-checkout
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Push
+      - name: Push to Deploy Branch
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: main # The branch name where you want to push the assets
-          FOLDER: main # The directory where your assets are generated
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub will automatically add this - you don't need to bother getting a token
-          MESSAGE: "Build: ({sha}) {msg}" # The commit message
+          FOLDER: . # Push everything from the root directory
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "Deploy: ({sha}) {msg}"
