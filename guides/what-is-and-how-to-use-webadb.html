@@ -22,153 +22,7 @@
     />
   </head>
   <body>
-    <header class="bg-gray-900">
-      <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div class="flex lg:flex-1">
-          <a href="#" class="-m-1 p-1">
-            <span class="sr-only">JTech Forums</span>
-            <img class="h-12 w-auto" src="/img/smalljtech.png" alt="" />
-          </a>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="flex lg:hidden">
-          <button
-            id="mobile-menu-button"
-            type="button"
-            class="cursor-pointer -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Desktop Menu -->
-        <div class="hidden lg:flex lg:gap-x-12">
-          <a href="/" class="text-md/6 font-semibold text-white">Home</a>
-          <a href="/apps" class="text-md/6 font-semibold text-white">Apps</a>
-          <a href="/guides" class="text-md/6 font-semibold text-white">Guides</a>
-          <a href="https://jtechforums.org" target="_blank" class="text-md/6 font-semibold text-white">Forum</a>
-        </div>
-
-        <!-- Desktop Search Bar -->
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <form id="search-form-desktop" action="https://www.jtechforums.org/search" method="get">
-            <div
-              class="flex rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-gray-300"
-            >
-              <input
-                id="search-input-desktop"
-                type="search"
-                name="q"
-                placeholder="Search the Forum..."
-                class="block min-w-0 grow px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-              />
-              <div class="flex py-1.5 pr-1.5">
-                <kbd class="inline-flex items-center rounded-sm border border-gray-200 px-1 font-sans text-xs text-gray-400">enter</kbd>
-              </div>
-            </div>
-            <p id="error-message-desktop" class="mt-2 text-sm text-red-500 hidden">Minimum character count is 4.</p>
-          </form>
-        </div>
-      </nav>
-
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden fixed inset-0 z-10 bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
-        <div class="flex items-center justify-between">
-          <a href="#" class="-m-1.5 p-1.5">
-            <span class="sr-only">JTech Forums</span>
-            <img class="h-8 w-auto" src="/img/smalljtech.png" alt="" />
-          </a>
-          <button id="mobile-menu-close" type="button" class="cursor-pointer -m-2.5 rounded-md p-2.5 text-gray-400">
-            <span class="sr-only">Close menu</span>
-            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/25">
-            <div class="space-y-2 py-6">
-              <a href="/" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Home</a>
-              <a href="/apps" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Apps</a>
-
-              <a href="/guides" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Guides</a>
-              <a href="https://jtechforums.org" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800"
-                >Forum</a
-              >
-            </div>
-
-            <!-- Mobile Search Bar -->
-            <div class="py-6">
-              <form id="search-form-mobile" action="https://www.jtechforums.org/search" method="get">
-                <div
-                  class="flex rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-gray-300"
-                >
-                  <input
-                    id="search-input-mobile"
-                    type="search"
-                    name="q"
-                    placeholder="Search the Forum..."
-                    class="block min-w-0 grow px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                  />
-                  <div class="flex py-1.5 pr-1.5">
-                    <kbd class="inline-flex items-center rounded-sm border border-gray-200 px-1 font-sans text-xs text-gray-400">enter</kbd>
-                  </div>
-                </div>
-                <p id="error-message-mobile" class="mt-2 text-sm text-red-500 hidden">Minimum character count is 4.</p>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const mobileMenu = document.getElementById("mobile-menu");
-        const openButton = document.getElementById("mobile-menu-button");
-        const closeButton = document.getElementById("mobile-menu-close");
-
-        // Open menu
-        openButton.addEventListener("click", function () {
-          mobileMenu.classList.remove("hidden");
-        });
-
-        // Close menu
-        closeButton.addEventListener("click", function () {
-          mobileMenu.classList.add("hidden");
-        });
-
-        // Search validation for Desktop
-        document.getElementById("search-form-desktop").addEventListener("submit", function (event) {
-          const input = document.getElementById("search-input-desktop");
-          const errorMessage = document.getElementById("error-message-desktop");
-
-          if (input.value.length < 4) {
-            event.preventDefault();
-            errorMessage.classList.remove("hidden");
-          } else {
-            errorMessage.classList.add("hidden");
-          }
-        });
-
-        // Search validation for Mobile
-        document.getElementById("search-form-mobile").addEventListener("submit", function (event) {
-          const input = document.getElementById("search-input-mobile");
-          const errorMessage = document.getElementById("error-message-mobile");
-
-          if (input.value.length < 4) {
-            event.preventDefault();
-            errorMessage.classList.remove("hidden");
-          } else {
-            errorMessage.classList.add("hidden");
-          }
-        });
-      });
-    </script>
+    <div id="header-container"></div>
 
     <div class="bg-white px-6 py-32 lg:px-8">
       <div class="mx-auto max-w-3xl text-base/7 text-gray-700">
@@ -281,5 +135,13 @@
       </div>
     </footer>
     <script type="module" src="https://unpkg.com/@material-tailwind/html@latest/scripts/tooltip.js"></script>
+
+    <script>
+      fetch("constants/headerLight.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        });
+    </script>
   </body>
 </html>
