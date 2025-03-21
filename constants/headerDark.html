@@ -27,11 +27,10 @@
       <a href="/apps" class="text-md/6 font-semibold text-white">Apps</a>
       <a href="/guides" class="text-md/6 font-semibold text-white">Guides</a>
       <a href="/egate" class="text-md/6 font-semibold text-white">eGate</a>
-      <a href="https://jtechforums.org" target="_blank" class="text-md/6 font-semibold text-white">Forum</a>
     </div>
 
     <!-- Desktop Search Bar -->
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center gap-4">
       <form id="search-form-desktop" action="https://www.jtechforums.org/search" method="get">
         <div
           class="flex rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-gray-300"
@@ -49,6 +48,14 @@
         </div>
         <p id="error-message-desktop" class="mt-2 text-sm text-red-500 hidden">Minimum character count is 4.</p>
       </form>
+
+      <a
+        href="https://jtechforums.org"
+        target="_blank"
+        class="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-md font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        Forum <span aria-hidden="true" class="ml-1">&rarr;</span>
+      </a>
     </div>
   </nav>
 
@@ -95,6 +102,14 @@
             </div>
             <p id="error-message-mobile" class="mt-2 text-sm text-red-500 hidden">Minimum character count is 4.</p>
           </form>
+
+          <a
+            href="https://jtechforums.org"
+            target="_blank"
+            class="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-md font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Forum <span aria-hidden="true" class="ml-1">&rarr;</span>
+          </a>
         </div>
       </div>
     </div>
