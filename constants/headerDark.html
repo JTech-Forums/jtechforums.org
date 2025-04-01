@@ -33,7 +33,7 @@
 
     <!-- Desktop Search Bar -->
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <form id="search-form-desktop" action="https://www.jtechforums.org/search" method="get">
+      <form id="search-form-desktop" action="https://forums.jtechforums.org/search" method="get">
         <div
           class="flex rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-gray-300"
         >
@@ -75,12 +75,14 @@
           <a href="/guides" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Guides</a>
           <a href="/resources" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Resources</a>
           <a href="/egate" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">eGate</a>
-          <a href="https://forums.jtechforums.org" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800">Forum</a>
+          <a href="https://forums.jtechforums.org" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-white hover:bg-gray-800"
+            >Forum</a
+          >
         </div>
 
         <!-- Mobile Search Bar -->
         <div class="py-6">
-          <form id="search-form-mobile" action="https://www.jtechforums.org/search" method="get">
+          <form id="search-form-mobile" action="https://forums.jtechforums.org/search" method="get">
             <div
               class="flex rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-gray-300"
             >
@@ -146,61 +148,3 @@
     });
   });
 </script>
-
-  <style>
-    .slide-up {
-      transform: translateY(100%);
-      opacity: 0;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-
-    .slide-up.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  </style>
-
-  <div id="popup-overlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div id="popup" class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8 relative text-center slide-up">
-      <button onclick="closePopup()" class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-3xl leading-none font-bold">&times;</button>
-      <h2 class="text-3xl font-bold mb-4">We’re looking for collaborators!</h2>
-      <p class="text-gray-700 text-lg mb-6 leading-relaxed">
-        Please contact us via email at 
-        <a href="mailto:collab@jtechforums.org" class="text-blue-600 underline">collab@jtechforums.org</a><br />
-        or message an admin on the forum to contribute apps, guides, resources, and more!
-      </p>
-      <a href="mailto:collab@jtechforums.org" class="inline-block mt-2 px-6 py-3 bg-blue-600 text-white text-lg rounded-lg hover:bg-blue-700 transition">
-        Contact Us
-      </a>
-    </div>
-  </div>
-
-  <script>
-    const POPUP_KEY = 'jtech_popup_lastShown';
-
-    function closePopup() {
-      document.getElementById('popup-overlay').classList.add('hidden');
-      const now = new Date().getTime();
-      localStorage.setItem(POPUP_KEY, now.toString());
-    }
-
-    function shouldShowPopup() {
-      const lastShown = localStorage.getItem(POPUP_KEY);
-      if (!lastShown) return true;
-
-      const now = new Date().getTime();
-      const oneMonth = 30 * 24 * 60 * 60 * 1000;
-      return now - parseInt(lastShown) > oneMonth;
-    }
-
-    window.addEventListener('load', () => {
-      if (shouldShowPopup()) {
-        setTimeout(() => {
-          const overlay = document.getElementById('popup-overlay');
-          const popup = document.getElementById('popup');
-          overlay.classList.remove('hidden');
-          setTimeout(() => popup.classList.add('show'), 50);
-        }, 3000);
-      }
-    });
-  </script>

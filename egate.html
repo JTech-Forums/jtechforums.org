@@ -57,7 +57,7 @@
                   class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >Buy now</a
                 >
-                <a href="https://www.jtechforums.org/t/what-is-egate-software/235" target="_blank" class="text-sm/6 font-semibold text-gray-900"
+                <a href="https://forums.jtechforums.org/t/what-is-egate-software/235" target="_blank" class="text-sm/6 font-semibold text-gray-900"
                   >Learn more <span aria-hidden="true">→</span></a
                 >
               </div>
@@ -558,7 +558,7 @@
               </p>
               <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
                 <a
-                  href="https://jtechforums.org"
+                  href="https://forums.jtechforums.org"
                   class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >Join now!</a
                 >
@@ -576,15 +576,16 @@
           </div>
         </div>
       </div>
-      <!--Footer-->
-      <footer class="bg-gray-900">
-        <div class="mx-auto max-w-7xl px-6 py-12 md:items-center lg:px-8">
-          <p class="mt-8 text-center text-sm/6 text-gray-200 md:mt-0">&copy; 2025 JTech. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
+        <div id="footer-container"></div>
 
     <script>
+      fetch("constants/footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-container").innerHTML = data;
+        });
+
+     
       fetch("constants/headerLight.html")
         .then((response) => response.text())
         .then((data) => {

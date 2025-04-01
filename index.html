@@ -168,7 +168,7 @@
           <h2 class="text-base/7 font-semibold text-indigo-600">Guide</h2>
           <p class="mt-2 max-w-lg text-5xl font-semibold tracking-tight text-pretty text-gray-950 sm:text-6xl">Beginner's Guide to Getting Started</p>
           <div class="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
-            <a href="https://forums..jtechforums.org/t/what-is-adb-and-getting-started/1072" target="_blank" class="relative lg:col-span-3">
+            <a href="https://forums.jtechforums.org/t/what-is-adb-and-getting-started/1072" target="_blank" class="relative lg:col-span-3">
               <div class="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]"></div>
               <div
                 class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)]"
@@ -200,13 +200,13 @@
               </div>
               <div class="pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 lg:rounded-tr-[2rem]"></div>
             </a>
-            <a href="https://forums.jtechforums.org/t/what-is-egate-software/235" target="_blank" class="relative lg:col-span-2">
+            <a href="/egate" target="_blank" class="relative lg:col-span-2">
               <div class="absolute inset-px rounded-lg bg-white lg:rounded-bl-[2rem]"></div>
               <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-bl-[calc(2rem+1px)]">
                 <img class="h-100 object-cover object-left" src="img/home/egatesquare.png" alt="" />
                 <div class="p-10 pt-4">
                   <h3 class="text-sm/4 my-2 font-semibold text-indigo-600">Android Filter</h3>
-                  <p class="mt-2 text-lg font-medium tracking-tight text-gray-950">What is eGate filter?</p>
+                  <p class="mt-2 text-lg font-medium tracking-tight text-gray-950">What is the eGate filter?</p>
                   <p class="mt-2 max-w-lg text-sm/6 text-gray-600">eGate is an MDM (mobile device management) software for Android devices.</p>
                 </div>
               </div>
@@ -518,21 +518,89 @@
           });
         });
       </script>
-
-      <!--Footer-->
-      <footer class="bg-gray-900">
-        <div class="mx-auto max-w-7xl px-6 py-12 md:items-center lg:px-8">
-          <p class="mt-8 text-center text-sm/6 text-gray-200 md:mt-0">&copy; 2025 JTech. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
 
+    <div id="footer-container"></div>
+
     <script>
+      fetch("constants/footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-container").innerHTML = data;
+        });
+
       fetch("constants/headerDark.html")
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("header-container").innerHTML = data;
         });
     </script>
+
+    <!-- Popup Overlay -->
+    <div id="popup-overlay" class="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex items-center justify-center z-50 hidden">
+      <div id="popup" class="bg-white rounded-2xl shadow-2xl w-full max-w-xl p-8 relative text-center slide-up">
+        <button
+          onclick="closePopup()"
+          class="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-3xl leading-none font-bold cursor-pointer"
+        >
+          &times;
+        </button>
+        <h2 class="text-4xl font-bold my-4">Help us by contributing to this website!</h2>
+        <p class="text-gray-700 text-xl mb-6 leading-relaxed">
+          Please contact us via email at
+          <a href="mailto:collab@jtechforums.org" class="text-blue-600 underline">collab@jtechforums.org</a><br />
+          or message an admin on the forum to contribute apps, guides, resources, and more!
+        </p>
+        <a
+          href="mailto:collab@jtechforums.org"
+          class="inline-block mt-2 px-6 py-3 bg-blue-600 text-white text-lg rounded-lg hover:bg-blue-700 transition"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <script>
+      const POPUP_KEY = "jtech_popup_lastShown";
+
+      function closePopup() {
+        document.getElementById("popup-overlay").classList.add("hidden");
+        const now = new Date().getTime();
+        localStorage.setItem(POPUP_KEY, now.toString());
+      }
+
+      function shouldShowPopup() {
+        const lastShown = localStorage.getItem(POPUP_KEY);
+        if (!lastShown) return true;
+
+        const now = new Date().getTime();
+        const oneMonth = 30 * 24 * 60 * 60 * 1000;
+        return now - parseInt(lastShown) > oneMonth;
+      }
+
+      window.addEventListener("load", () => {
+        if (shouldShowPopup()) {
+          setTimeout(() => {
+            const overlay = document.getElementById("popup-overlay");
+            const popup = document.getElementById("popup");
+            overlay.classList.remove("hidden");
+            setTimeout(() => popup.classList.add("show"), 50);
+          }, 3000);
+        }
+      });
+    </script>
+
+    <style>
+      .slide-up {
+        transform: translateY(100%);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+
+      .slide-up.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    </style>
   </body>
 </html>
