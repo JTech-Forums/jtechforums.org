@@ -1,6 +1,6 @@
 # JTech Website
 
-![image](img/logo.png)
+![image](img/blacklogo.png)
 
 Welcome to the **JTech Website** repository! This is the official open-source project for the [JTech Forums](https://jtechforums.org) website, which provides beginner guides, an app list, FAQs, and other useful resources.
 
